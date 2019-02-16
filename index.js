@@ -2,8 +2,7 @@
 const express = require ('express');
 const app = express ();
 //Создание константы
-const AUTH = false;
-global.auth = AUTH;
+const auth = false;
 // Проверка значения auth
 
 app.use('/index', function(req, res, next) {
@@ -48,11 +47,5 @@ app.get('/login', function (req, res, next) {
 app.get('/*', function (req, res, next) {
     res.send('Страница 404');
 })
-
-/*
-app.get('/', function (req, res){
-    res.send('Страница404');
-})
-*/
 
 app.listen(8080)
