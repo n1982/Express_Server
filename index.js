@@ -1,19 +1,39 @@
 // Подключение Express
 const express = require ('express');
 const app = express ();
+
+// Подключение body-parser
+const bodyParser = require('body-parser');
+
 //Создание константы
 const auth = false;
+
+// Получение запроса из формы
+var urlencodedParser = bodyParser.urlencoded({ extended: false })
+
+// Перенаправление файла для POST запроса
+
+app.get('/index', function (req, res) {
+    res.sendFile(__dirname + "/view/index_V2.html");
+});
+// Обработка запроса
+app.post('/index', urlencodedParser, function (req, res) {
+    if (!req.body) return res.sendStatus(400);
+    console.log('POST запрос получен');
+    console.log('Что в теле запроса');
+    console.log(req.body);
+})
+
 // Проверка значения auth
-app.use((req, res, next)=>{
+/* app.use((req, res, next)=>{
     if (!auth && req.url != '/login'){
         res.redirect('/login');
     } else{
         next();
     }
-});
-app.get('/index', function (req, res) {
-        res.send("Главная страница /index");
-});
+}); */
+
+
 
 app.get('/about', function (req, res) {
         res.send("Страница описания /about");
