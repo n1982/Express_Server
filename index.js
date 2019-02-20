@@ -22,7 +22,10 @@ app.post('/index', urlencodedParser, function (req, res) {
     console.log('POST запрос получен');
     console.log('Что в теле запроса');
     console.log(req.body);
-})
+    if (req.body.login == 'Vasya' && req.body.pass == '12345'){
+        res.send('Поздравляю вы вошли!');
+    } else res.send('Вход не выполнен!');
+    })
 
 // Проверка значения auth
 /* app.use((req, res, next)=>{
