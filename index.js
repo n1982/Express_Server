@@ -14,7 +14,7 @@ var urlencodedParser = bodyParser.urlencoded({ extended: false })
 // Перенаправление файла для POST запроса
 
 app.get('/index', function (req, res) {
-    res.sendFile(__dirname + "/view/index_V2.html");
+    res.sendFile('D:\\Project\\Express_Server\\view\\index _V2.html');
 });
 // Обработка запроса
 app.post('/index', urlencodedParser, function (req, res) {
