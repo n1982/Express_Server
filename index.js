@@ -26,14 +26,18 @@ app.post('/index', urlencodedParser, function (req, res) {
     if (!req.body) return res.sendStatus(400);
 
     // Проверка доступа
+    var flag = false;
     UsDataJson.forEach(function(item, i, arr) {
         if (req.body.login == (item.login) && req.body.pass == (item.pass)){
-            res.send('Поздравляю вы вошли!');
+            console.log('Login: ' + item.login + ' Password: ' + item.pass)
+            flag = true;
         }
     });
-    res.send('Вход не выполнен!');
-    });
+flag == true ? res.send('Поздравляю вы вошли!') : res.send('Вы не вошли');
+});
 
+// Если пользователь не авторизирован
+// res.send('Вход не выполнен!');
 
 // Проверка значения auth
 /* app.use((req, res, next)=>{
