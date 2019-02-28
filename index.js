@@ -8,8 +8,20 @@ const bodyParser = require('body-parser');
 //Создание константы
 const auth = false;
 
+// Подключение JSON файла
+var UsData = require('./db/user.json');
+
+//Итог обработки JSON
+var dataJson = JSON.parse('UsData');
+console.log(dataJson.login);
+/*var obrJson = JSON.parse(users, function (key, value) {
+    if (key == "user.login") return new Login(value);
+    console.log(Login);
+})*/
+
+
 // Получение запроса из формы
-var urlencodedParser = bodyParser.urlencoded({ extended: false })
+var urlencodedParser = bodyParser.urlencoded({ extended: false });
 
 // Перенаправление файла для POST запроса
 
