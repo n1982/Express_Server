@@ -1,5 +1,22 @@
+[
 {
-  "login": "Anton",
-  "pass": "12345"
-  }
-
+      "login": "Anton",
+      "pass": "12",
+      "role": "Admin"
+    },
+    {
+      "login": "Nick",
+      "pass": "123",
+      "role": "Admin"
+    },
+    {
+      "login": "Anna",
+      "pass": "1234",
+      "role": "User"
+    },
+    {
+      "login": "Irina",
+      "pass": "12345",
+      "role": "User"
+    }
+ ]

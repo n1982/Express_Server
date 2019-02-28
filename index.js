@@ -9,35 +9,31 @@ const bodyParser = require('body-parser');
 const auth = false;
 
 // Подключение JSON файла
-var UsData = require('./db/user.json');
+var UsDataJson = require('./db/user.json');
 
 //Итог обработки JSON
-var dataJson = JSON.parse('UsData');
-console.log(dataJson.login);
-/*var obrJson = JSON.parse(users, function (key, value) {
-    if (key == "user.login") return new Login(value);
-    console.log(Login);
-})*/
-
+console.log(UsDataJson);
 
 // Получение запроса из формы
 var urlencodedParser = bodyParser.urlencoded({ extended: false });
 
 // Перенаправление файла для POST запроса
-
 app.get('/index', function (req, res) {
     res.sendFile('D:\\Project\\Express_Server\\view\\index _V2.html');
 });
 // Обработка запроса
 app.post('/index', urlencodedParser, function (req, res) {
     if (!req.body) return res.sendStatus(400);
-    console.log('POST запрос получен');
-    console.log('Что в теле запроса');
-    console.log(req.body);
-    if (req.body.login == 'Vasya' && req.body.pass == '12345'){
-        res.send('Поздравляю вы вошли!');
-    } else res.send('Вход не выполнен!');
-    })
+
+    // Проверка доступа
+    UsDataJson.forEach(function(item, i, arr) {
+        if (req.body.login == (item.login) && req.body.pass == (item.pass)){
+            res.send('Поздравляю вы вошли!');
+        }
+    });
+    res.send('Вход не выполнен!');
+    });
+
 
 // Проверка значения auth
 /* app.use((req, res, next)=>{
