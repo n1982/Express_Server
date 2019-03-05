@@ -2,6 +2,9 @@
 const express = require ('express');
 const app = express ();
 
+// Подключение модуля для работы с файлами
+const fs = require ('fs');
+
 // Подключение body-parser
 const bodyParser = require('body-parser');
 
@@ -19,22 +22,25 @@ var urlencodedParser = bodyParser.urlencoded({ extended: false });
 
 // Перенаправление файла для POST запроса
 app.get('/index', function (req, res) {
-    res.sendFile('D:\\Project\\Express_Server\\view\\index _V2.html');
+    res.sendFile(__dirname + '/view/index _V2.html');
 });
+
 // Обработка запроса
 app.post('/index', urlencodedParser, function (req, res) {
     if (!req.body) return res.sendStatus(400);
 
     // Проверка доступа
-    var flag = false;
-    UsDataJson.forEach(function(item, i, arr) {
+    // var flag = false;
+    UsDataJson.forEach(function(item) {
         if (req.body.login == (item.login) && req.body.pass == (item.pass)){
-            console.log('Login: ' + item.login + ' Password: ' + item.pass)
-            flag = true;
-        }
-    });
-flag == true ? res.send('Поздравляю вы вошли!') : res.send('Вы не вошли');
+            console.log('Login: ' + item.login + ' Password: ' + item.pass);
+            // flag = true;
+            res.end ('Поздравляю вы вошли!' + 'Logged in');
+        } else res.end ('Вы не вошли!' + 'Not logged in!');
+    });// flag == true ? res.send('Поздравляю вы вошли!') : res.send('Вы не вошли');
 });
+
+
 
 // Если пользователь не авторизирован
 // res.send('Вход не выполнен!');
