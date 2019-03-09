@@ -23,11 +23,11 @@ app.get('/login', function(req, res) {
     res.status(200).send("ВВОД ЛОГИНА И ПАРОЛЯ ТУТ");
 
 });
-app.get('/about', function(req, res) {
-    res.send("Страница описания /about");
+app.get('/about.ejs', function(req, res) {
+    res.send("Страница описания /about.ejs");
 
 });
-app.get('/settings', function(req, res) {
+app.get('/settings.ejs', function(req, res) {
     res.send("Страница настроек /settings");
 
 });
