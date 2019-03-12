@@ -8,33 +8,20 @@
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
 
-    <title>Вход пользователя</title>
+    <title><%=title %></title>
 </head>
 <body>
+<p>Добрый день, <%=login %>!</p>
+
 <form action="/index" method="post">
     <p>Логин: <input placeholder="Введите Ваш логин" maxlength="25" size="40" name="login" > </p>
     <p>Пароль: <input type="password" maxlength="25" size="40" name="pass" ></p>
     <p><button type="submit">Войти</button></p>
-    <p>Эта страница создана с помощью ejs-locals + Bootstrap! </p>
-    <p>login": "Anton",
-        "pass": "12",
-        "role": "Admin"
-        },
-        {
-        "login": "Nick",
-        "pass": "123",
-        "role": "Admin"
-        },
-        {
-        "login": "Anna",
-        "pass": "1234",
-        "role": "User"
-        },
-        {
-        "login": "Irina",
-        "pass": "12345",
-        "role": "User"</p>
 </form>
+    <p><%=userText %></p>
+
+
+
 
 <!-- Optional JavaScript -->
 <!-- jQuery first, then Popper.js, then Bootstrap JS -->
