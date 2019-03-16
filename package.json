@@ -11,11 +11,14 @@
   "dependencies": {
     "body-parser": "^1.18.3",
     "bootstrap": "^4.3.1",
+    "cookie-parser": "^1.4.4",
     "ejs": "^2.6.1",
     "ejs-locals": "^1.0.2",
     "express": "^4.16.4",
+    "express-session": "^1.15.6",
     "jquery": "^3.3.1",
     "nconf": "^0.10.0",
-    "popper": "^1.0.1"
+    "popper": "^1.0.1",
+    "popper.js": "^1.14.7"
   }
 }
