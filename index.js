@@ -8,7 +8,7 @@ const config = require ('./config/index.js');
 app.set('port', config.get('port'));
 
 // Подключение модуля для работы с файлами
-const fs = require ('fs');
+//const fs = require ('fs');
 
 //Подключение генератора случайных чисел
 const uuidv1 = require('uuid/v1');
@@ -22,12 +22,15 @@ app.set('view engine', "ejs");
 const bodyParser = require('body-parser');
 
 //Подключаем сессию
+
 const session = require('express-session');
+
 
 app.use(session({
     secret: 'UsSecret',
-    resave: true,
-    saveUninitialized: true
+    resave: false,
+    saveUninitialized: true,
+    cookie: {maxAge: 86400000}
 }));
 
 // Подключение JSON файла
@@ -39,13 +42,36 @@ console.log(UsDataJson);
 // Получение запроса из формы
 var urlencodedParser = bodyParser.urlencoded({ extended: false });
 
-// Перенаправление файла для POST запроса
+app.get('/', function (req, res) {
+    if (req.session.token){
+        res.render("login",{
+            title: "Успешный вход",
+            login: req.session.name,
+            userText: "Вход выполнен. Ура!!! ,благодаря печенькам"
+        });
+    } else {
+        res.render("index", {
+            title: "Вход не выполнен!",
+            login: "Пользователь",
+            userText: "К сожалению вход не выполнен. Ошибка в Имени пользователя, либо пароле. Попробуйте еще раз!"
+        });
+    };
+});
+
 app.get('/index', function (req, res) {
-      res.render("index", {
-        title: "Страница входа!",
-        login: "Пользователь",
-        userText: "Введите Имя пользователяи пароль!"
-    });
+    if (req.session.token){
+        res.render("login",{
+            title: "Успешный вход",
+            login: req.session.name,
+            userText: "Вход выполнен. Ура!!!"
+        });
+    } else {
+        res.render("index", {
+            title: "Вход не выполнен!",
+            login: "Пользователь",
+            userText: "К сожалению вход не выполнен. Ошибка в Имени пользователя, либо пароле. Попробуйте еще раз!"
+        });
+    };
 });
 
 // Обработка запроса
@@ -58,17 +84,19 @@ app.post('/index', urlencodedParser, function (req, res) {
     })) {
         var uuid = uuidv1();
         console.log(uuid);
-        req.session.token = uuid + req.body.login;
-        console.log(req.session.token);
-        res.render("login",{
+            req.session.token = uuid;
+            req.session.name = req.body.login;
+            console.log(req.session.token);
+            console.log(req.session.id);
+            res.render("login",{
             title: "Успешный вход",
-            login: req.body.login,
+            login: req.session.name,
             userText: "Вход выполнен. Ура!!!"
         });
     } else {
         res.render("index", {
             title: "Вход не выполнен!",
-            login: "Пользователь",
+            login: req.session.name,
             userText: "К сожалению вход не выполнен. Ошибка в Имени пользователя, либо пароле. Попробуйте еще раз!"
             });
         };
@@ -78,7 +106,7 @@ app.get('/about', function (req, res) {
    if (req.session.token){
     res.render("about", {
         title: "О программе",
-        login: req.body.login,
+        login: req.session.name,
         userText: "В не далеком будущем данная страница расскажет зачем все это."
     });
 } else {
@@ -93,7 +121,7 @@ app.get('/settings', function (req, res, next) {
     if (req.session.token){
     res.render("settings", {
         title: "Настройки",
-        login: req.body.login,
+        login: req.session.name,
         userText: "В недалеком будущем даннаястраница расскажет как это все настроить."
     });
     } else {
