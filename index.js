@@ -3,11 +3,6 @@ const express = require ('express');
 const app = express ();
 const http = require ('http');
 
-//Создаем HTTP сервер для HEROKU
-http.createServer(function(req, res){
-    res.writeHead(200,{"Content-Type": "text/plain"})
-}).listen(process.env.PORT);
-
 // Подключение конфигуратора
 const config = require ('./config/index.js');
 app.set('port', config.get('port'));
@@ -148,8 +143,8 @@ app.get('/404', function(req, res){
 
 // Слушаем порт
 
-/*app.listen(config.get('port'), ()=> {
+app.listen(config.get('port'), ()=> {
     console.log('Слушается порт '+  config.get('port'));
-});*/
+});
 
 
