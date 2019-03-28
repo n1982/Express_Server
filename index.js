@@ -122,7 +122,7 @@ app.get('/settings', function (req, res, next) {
     res.render("settings", {
         title: "Настройки",
         login: req.session.name,
-        userText: "В недалеком будущем даннаястраница расскажет как это все настроить."
+        userText: "В недалеком будущем данная страница расскажет, как это все настроить."
     });
     } else {
         res.render("index", {
