@@ -21,8 +21,7 @@
     "mongodb": "^3.1.13",
     "nconf": "^0.10.0",
     "popper": "^1.0.1",
-    "popper.js": "^1.14.7",
-    "main": "index.js"
+    "popper.js": "^1.14.7"
   },
   "engines": {
     "node": "10.15.x",
