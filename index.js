@@ -142,7 +142,7 @@ app.get('/404', function(req, res){
 });
 
 // Слушаем порт
-http.listen((process.env.PORT || 8080), function(){
+app.listen((process.env.PORT || 8080), function(){
     console.log('listening on *:8080');
 });
 
