@@ -142,9 +142,11 @@ app.get('/404', function(req, res){
 });
 
 // Слушаем порт
+var port = process.env.port || 8080;
+app.listen(port);
+console.log('Слушается порт '+ port);
 
-app.listen(config.get('port'), ()=> {
-    console.log('Слушается порт '+  config.get('port'));
-});
+/*app.listen(config.get('port'), ()=> {
+    console.log('Слушается порт '+  config.get('port'));*/
 
 
