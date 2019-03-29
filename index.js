@@ -22,7 +22,7 @@ console.log(UsDataJson);
 
 //подключаем файл маршрутизации
 const routers = require('./routes');
-app.use('*', routers);
+app.use(routers);
 //Подключаем сессию
 const session = require('express-session');
 app.use(session({
