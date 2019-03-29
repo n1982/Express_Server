@@ -1,6 +1,50 @@
 var express = require('express');
 var router = express.Router();
-const bodyParser = require('body-parser');
+
+
+router.get('/index', function (req, res) {
+    res.render("index", {
+        title: "Страница входа /index",
+        login: "Пользователь",
+        userText: "Для входа введите имя пользователя и пароль"
+    });
+});
+router.get('/settings', function (req, res) {
+    res.render("settings", {
+        title: "Страница входа",
+        login: "Пользователь",
+        userText: "Для входа введите имя пользователя и пароль"
+    });
+});
+router.get('/about', function (req, res) {
+    res.render("about", {
+        title: "Страница входа",
+        login: "Пользователь",
+        userText: "Для входа введите имя пользователя и пароль"
+    });
+});
+router.get('/login', function (req, res) {
+    res.render("login", {
+        title: "Страница входа",
+        login: "Пользователь",
+        userText: "Для входа введите имя пользователя и пароль"
+    });
+});
+router.get('/', function (req, res) {
+            res.render("login", {
+            title: "Страница входа сработал /",
+            login: "Пользователь",
+            userText: "Для входа введите имя пользователя и пароль"
+        });
+});
+router.get('*', function (req, res) {
+    res.render("404");
+});
+
+
+
+//Подключение генератора случайных чисел
+/*const uuidv1 = require('uuid/v1');
 var urlencodedParser = bodyParser.urlencoded({ extended: false });
 
 // Обработка запроса
@@ -102,5 +146,5 @@ router.get('*', function (req, res) {
 })
 router.get('/404', function(req, res){
     res.sendStatus(404);
-});
-module.exports = router
+});*/
+module.exports = router;

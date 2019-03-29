@@ -14,14 +14,15 @@ app.set('view engine', "ejs");
 
 // Подключение body-parser
 const bodyParser = require('body-parser');
+// Подключение JSON файла
+var UsDataJson = require('./db/user.json');
 
-//Подключение генератора случайных чисел
-const uuidv1 = require('uuid/v1');
+//Итог обработки JSON
+console.log(UsDataJson);
 
 //подключаем файл маршрутизации
 const routers = require('./routes');
-app.use('/', routers);
-
+app.use('*', routers);
 //Подключаем сессию
 const session = require('express-session');
 app.use(session({
@@ -31,11 +32,7 @@ app.use(session({
     cookie: {maxAge: 86400000}
 }));
 
-// Подключение JSON файла
-var UsDataJson = require('./db/user.json');
 
-//Итог обработки JSON
-console.log(UsDataJson);
 
 /*// Получение запроса из формы
 var urlencodedParser = bodyParser.urlencoded({ extended: false });
