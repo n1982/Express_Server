@@ -6,21 +6,21 @@ router.get('/index', function (req, res) {
     res.render("index", {
         title: "Страница входа /index",
         login: "Пользователь",
-        userText: "Для входа введите имя пользователя и пароль"
+        userText: "Это главная страница"
     });
 });
 router.get('/settings', function (req, res) {
     res.render("settings", {
         title: "Страница входа",
         login: "Пользователь",
-        userText: "Для входа введите имя пользователя и пароль"
+        userText: "Это страница настроек"
     });
 });
 router.get('/about', function (req, res) {
     res.render("about", {
         title: "Страница входа",
         login: "Пользователь",
-        userText: "Для входа введите имя пользователя и пароль"
+        userText: "Эта страница расскажет о сайте"
     });
 });
 router.get('/login', function (req, res) {
