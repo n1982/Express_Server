@@ -37,11 +37,11 @@ app.use(session({
 
 
 //Подключение генератора случайных чисел
-/* const uuidv1 = require('uuid/v1');
-var urlencodedParser = bodyParser.urlencoded({ extended: false });*/
+const uuidv1 = require('uuid/v1');
+var urlencodedParser = bodyParser.urlencoded({ extended: false });
 
 // Обработка запроса
-/* router.post('/login', urlencodedParser, function (req, res) {
+app.post('/login', urlencodedParser, function (req, res) {
     if (!req.body) return res.render("404");
 
     // Проверка доступа
@@ -66,42 +66,9 @@ var urlencodedParser = bodyParser.urlencoded({ extended: false });*/
             userText: "К сожалению вход не выполнен. Ошибка в Имени пользователя, либо пароле. Попробуйте еще раз!"
         });
     };
-});*/
-
-/*// Получение запроса из формы
-var urlencodedParser = bodyParser.urlencoded({ extended: false });
-
-app.get('/', function (req, res) {
-    if (req.session.token){
-        res.render("login",{
-            title: "Успешный вход",
-            login: req.session.name,
-            userText: "Вход выполнен. Ура!!! ,благодаря печенькам"
-        });
-    } else {
-        res.render("index", {
-            title: "Вход не выполнен!",
-            login: "Пользователь",
-            userText: "К сожалению вход не выполнен. Ошибка в Имени пользователя, либо пароле. Попробуйте еще раз!"
-        });
-    };
 });
 
-app.get('/index', function (req, res) {
-    if (req.session.token){
-        res.render("login",{
-            title: "Успешный вход",
-            login: req.session.name,
-            userText: "Вход выполнен. Ура!!!"
-        });
-    } else {
-        res.render("index", {
-            title: "Вход не выполнен!",
-            login: "Пользователь",
-            userText: "К сожалению вход не выполнен. Ошибка в Имени пользователя, либо пароле. Попробуйте еще раз!"
-        });
-    };
-});
+/*/
 
 // Обработка запроса
 app.post('/index', urlencodedParser, function (req, res) {
@@ -129,9 +96,9 @@ app.post('/index', urlencodedParser, function (req, res) {
             userText: "К сожалению вход не выполнен. Ошибка в Имени пользователя, либо пароле. Попробуйте еще раз!"
         });
     };
-});
+});*/
 
-app.get('/about', function (req, res) {
+/*app.get('/about', function (req, res) {
     if (req.session.token){
         res.render("about", {
             title: "О программе",
@@ -167,7 +134,7 @@ app.get('*', function (req, res) {
     res.redirect('/404');
 });app.get('/404', function(req, res){
     res.sendStatus(404);
-});*/
+});*!/*/
 // Слушаем порт
 app.listen((process.env.PORT || 8080), function(){
     console.log('listening on *:8080');
