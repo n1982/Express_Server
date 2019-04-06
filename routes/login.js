@@ -18,7 +18,7 @@ exports.get= function (req, res) {
 
 
 // Обработка запроса
-exports.post= function (req, res,) {
+exports.post= function (req, res) {
     if (!req.body) return res.render("404");
     // Проверка доступа
     if (UsDataJson.some(function (item) {
@@ -43,6 +43,7 @@ exports.post= function (req, res,) {
         });
     };
 };
+//exports.post= PostParsing(urlencodedParser);
 
 
 

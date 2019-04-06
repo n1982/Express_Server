@@ -36,7 +36,7 @@ app.use(session({
 
 
 
-//Подключение генератора случайных чисел
+/*//Подключение генератора случайных чисел
 const uuidv1 = require('uuid/v1');
 var urlencodedParser = bodyParser.urlencoded({ extended: false });
 
@@ -66,11 +66,11 @@ app.post('/login', urlencodedParser, function (req, res) {
             userText: "К сожалению вход не выполнен. Ошибка в Имени пользователя, либо пароле. Попробуйте еще раз!"
         });
     };
-});
+});*/
 
-/*/
 
-// Обработка запроса
+
+/*// Обработка запроса
 app.post('/index', urlencodedParser, function (req, res) {
     if (!req.body) return res.sendStatus(400);
 

@@ -10,7 +10,7 @@ router.get('/settings', require('./settings').get);
 router.get('/about', require('./about').get);
 router.get('/login', require('./login').get);
 
-// Пост обработка
+// POST обработка
 router.post('/login', require('./login').post);
 
 
