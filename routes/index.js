@@ -11,7 +11,7 @@ router.get('/about', require('./about').get);
 router.get('/login', require('./login').get);
 
 // Пост обработка
-//router.post('/login', require('./login').post);
+router.post('/login', require('./login').post);
 
 
 
