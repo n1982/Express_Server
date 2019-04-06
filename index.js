@@ -15,14 +15,15 @@ app.set('view engine', "ejs");
 // Подключение body-parser
 const bodyParser = require('body-parser');
 // Подключение JSON файла
-var UsDataJson = require('./db/user.json');
+
 
 //Итог обработки JSON
-console.log(UsDataJson);
+//console.log(UsDataJson);
 
 //подключаем файл маршрутизации
 const routers = require('./routes');
 app.use(routers);
+
 //Подключаем сессию
 const session = require('express-session');
 app.use(session({
@@ -33,6 +34,39 @@ app.use(session({
 }));
 
 
+
+
+//Подключение генератора случайных чисел
+/* const uuidv1 = require('uuid/v1');
+var urlencodedParser = bodyParser.urlencoded({ extended: false });*/
+
+// Обработка запроса
+/* router.post('/login', urlencodedParser, function (req, res) {
+    if (!req.body) return res.render("404");
+
+    // Проверка доступа
+    if (UsDataJson.some(function (item) {
+        return req.body.login == (item.login) && req.body.pass == (item.pass)
+    })) {
+        var uuid = uuidv1();
+        console.log(uuid);
+        req.session.token = uuid;
+        req.session.name = req.body.login;
+        console.log(req.session.token);
+        console.log(req.session.id);
+        res.render("login",{
+            title: "Успешный вход",
+            login: req.session.name,
+            userText: "Вход выполнен. Ура!!!"
+        });
+    } else {
+        res.render("index", {
+            title: "Вход не выполнен!",
+            login: req.session.name,
+            userText: "К сожалению вход не выполнен. Ошибка в Имени пользователя, либо пароле. Попробуйте еще раз!"
+        });
+    };
+});*/
 
 /*// Получение запроса из формы
 var urlencodedParser = bodyParser.urlencoded({ extended: false });
