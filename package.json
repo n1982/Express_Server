@@ -10,18 +10,18 @@
   "author": "nick",
   "license": "ISC",
   "dependencies": {
-    "body-parser": "^1.18.3",
+    "body-parser": "^1.19.0",
     "bootstrap": "^4.3.1",
     "cookie-parser": "^1.4.4",
     "ejs": "^2.6.1",
     "ejs-locals": "^1.0.2",
     "express": "^4.16.4",
-    "express-session": "^1.15.6",
-    "jquery": "^3.3.1",
-    "mongodb": "^3.1.13",
+    "express-session": "^1.16.1",
+    "jquery": "^3.4.1",
+    "mongodb": "^3.2.3",
     "nconf": "^0.10.0",
     "popper": "^1.0.1",
-    "popper.js": "^1.14.7"
+    "popper.js": "^1.15.0"
   },
   "engines": {
     "node": "10.15.x",
