@@ -1,5 +1,4 @@
-﻿Проба-учеба :-)
- !Почитать type-script и vue.js 
+!Почитать type-script и vue.js 
 	
 	Шаг 1
 
