@@ -4,25 +4,26 @@ const app = express ();
 // const http = require ('http');
 
 // Подключение конфигуратора
-/*const config = require ('./config/index.js');
-app.set('port', config.get('port'));*/
+const config = require ('./config/index.js');
+
 
 //Настройка шаблонизатора
 app.engine('ejs', require('ejs-locals'));
 app.set('views', __dirname + '/view');
 app.set('view engine', "ejs");
+console.log('Shablonizator is ON')
 
 // Подключение body-parser
 const bodyParser = require('body-parser');
+console.log('Body parser is ON')
 // Подключение JSON файла
 
-
-//Итог обработки JSON
-//console.log(UsDataJson);
-
 //подключаем файл маршрутизации
-const routers = require('./routes');
-app.use(routers);
+//const routers = require('./routes');
+let routers = require('./routes/index')
+app.use('/', routers);
+console.log('Router zarabotal, no kuda?')
+
 
 //Подключаем сессию
 const session = require('express-session');
@@ -30,8 +31,9 @@ app.use(session({
     secret: 'UsSecret',
     resave: false,
     saveUninitialized: true,
-    cookie: {maxAge: 86400000}
-}));
+    cookie: {maxAge: 86400000},
+   }));
+console.log('sessia+')
 
 
 
@@ -135,10 +137,16 @@ app.get('*', function (req, res) {
 });app.get('/404', function(req, res){
     res.sendStatus(404);
 });*!/*/
+
+app.set('port', config.get('port'));
 // Слушаем порт
+/*http.createServer(app).listen(app.get('port'), function(){
+    console.log('listening on *:8080')
+    })*/
 app.listen((process.env.PORT || 8080), function(){
     console.log('listening on *:8080');
 });
+
 
 
 
